@@ -2,9 +2,10 @@
 
 set -e
 
+CRON_FILE=/app/crontab
+
 if [ -n "$CRONTAB" ]; then
-    echo "$CRONTAB" > /etc/cron.d/crontab
-    chmod 0644 /etc/cron.d/crontab
+    echo "$CRONTAB" > "$CRON_FILE"
 fi
 
-exec /usr/local/bin/supercronic /etc/cron.d/crontab
+exec /usr/local/bin/supercronic "$CRON_FILE"
